@@ -10,6 +10,14 @@ red = (255, 0, 0)
 green = (0, 255, 0)
 blue = (0, 0, 255)
 cyan = (0, 255, 255)
+yellow = (255, 255, 0)
+magenta = (255, 0, 255)
+violet = (128, 0, 128)
+
+
+def quit_app():
+    pg.quit()
+    quit()
 
 
 class Interface:
@@ -35,10 +43,6 @@ class Interface:
 
     def show_bread(self, x, y):
         self.game_display.blit(self.HappyBread.rotated, (x, y))
-
-    def quit_app(self):
-        pg.quit()
-        quit()
 
     def mainloop(self):
 
@@ -71,4 +75,4 @@ if __name__ == "__main__":
 
     a = Interface()
     a.mainloop()
-    a.quit_app()
+    quit_app()
