@@ -33,16 +33,16 @@ class Interface:
 
         self.clock = pg.time.Clock()
 
-        self.HappyBread = Bread(sprite='resources/HappyBread.png')
+        # self.x_current = display_width/3
+        self.screen_surf = pg.display.get_surface()
+        self.x_current = self.screen_surf.get_rect().centerx
+        self.y_current = self.screen_surf.get_rect().centery
 
-        self.x_center = display_width/2
-        self.y_center = display_height/2
+        self.HappyBread = Bread(sprite='resources/HappyBread.png',
+                                coordinates=(self.x_current, self.y_current))
 
-        self.x_current = display_width/3
-        self.y_current = display_height/3
-
-    def show_bread(self, x, y):
-        self.game_display.blit(self.HappyBread.rotated, (x, y))
+    def show_bread(self, surface):
+        self.game_display.blit(self.HappyBread.rotated, surface)
 
     def mainloop(self):
 
@@ -54,18 +54,19 @@ class Interface:
                 if event.type == pg.QUIT:
                     closed = True
 
+            # update image surface on controls
             key = pg.key.get_pressed()
             if key[pg.K_UP]:
-                self.y_current -= 7
+                self.HappyBread.translate(0, -7)
             if key[pg.K_LEFT]:
                 self.HappyBread.rotate(6)
             if key[pg.K_RIGHT]:
                 self.HappyBread.rotate(-6)
             if key[pg.K_DOWN]:
-                self.y_current += 7
+                self.HappyBread.translate(0, 7)
 
             self.game_display.fill(white)
-            self.show_bread(self.x_current, self.y_current)
+            self.show_bread(self.HappyBread.surface)
 
             pg.display.update()
             self.clock.tick(30)
