@@ -1,10 +1,7 @@
-import pygame as pg
+# import pygame as pg  # not needed because it is imported in Toast.py
+
 from Toast import *
 
-pg.init()
-
-display_width = 800
-display_height = 600
 
 # color definition triplets
 black = (0, 0, 0)
@@ -14,75 +11,64 @@ green = (0, 255, 0)
 blue = (0, 0, 255)
 cyan = (0, 255, 255)
 
-gameDisplay = pg.display.set_mode((display_width, display_height))
-pg.display.set_caption('Yeah Toast!')
 
-clock = pg.time.Clock()
+class Interface:
 
+    def __init__(self):
+        pg.init()
 
-HappyBread = Bread(sprite='resources/HappyBread.png')
+        display_width = 800
+        display_height = 600
 
+        self.game_display = pg.display.set_mode((display_width, display_height))
+        pg.display.set_caption('Yeah Toast!')
 
-def show_bread(x, y):
-    gameDisplay.blit(HappyBread.rotated, (x, y))
+        self.clock = pg.time.Clock()
 
+        self.HappyBread = Bread(sprite='resources/HappyBread.png')
 
-x_center = display_width/2
-y_center = display_height/2
+        self.x_center = display_width/2
+        self.y_center = display_height/2
 
-x = display_width/3
-y = display_height/3
+        self.x_current = display_width/3
+        self.y_current = display_height/3
 
+    def show_bread(self, x, y):
+        self.game_display.blit(self.HappyBread.rotated, (x, y))
 
-def display_everything():
-    crashed = False
+    def quit_app(self):
+        pg.quit()
+        quit()
 
-    while not crashed:
+    def mainloop(self):
 
-        for event in pg.event.get():
-            if event.type == pg.QUIT:
-                crashed = True
+        closed = False
 
-            print(event)
+        while not closed:
 
-        pg.display.update()
-        clock.tick(60)
+            for event in pg.event.get():
+                if event.type == pg.QUIT:
+                    closed = True
 
+            key = pg.key.get_pressed()
+            if key[pg.K_UP]:
+                self.y_current -= 7
+            if key[pg.K_LEFT]:
+                self.HappyBread.rotate(6)
+            if key[pg.K_RIGHT]:
+                self.HappyBread.rotate(-6)
+            if key[pg.K_DOWN]:
+                self.y_current += 7
 
-def quit_app():
-    pg.quit()
-    quit()
+            self.game_display.fill(white)
+            self.show_bread(self.x_current, self.y_current)
 
-
-def mainloop():
-    global x, y
-
-    closed = False
-
-    while not closed:
-
-        for event in pg.event.get():
-            if event.type == pg.QUIT:
-                closed = True
-
-        key = pg.key.get_pressed()
-        if key[pg.K_UP]:
-            y -= 5
-        elif key[pg.K_LEFT]:
-            HappyBread.rotate(6)
-        elif key[pg.K_RIGHT]:
-            HappyBread.rotate(-6)
-        elif key[pg.K_DOWN]:
-            y += 5
-
-        gameDisplay.fill(white)
-        show_bread(x, y)
-
-        pg.display.update()
-        clock.tick(30)
+            pg.display.update()
+            self.clock.tick(30)
 
 
 if __name__ == "__main__":
-    # display_everything()
-    mainloop()
-    quit_app()
+
+    a = Interface()
+    a.mainloop()
+    a.quit_app()
