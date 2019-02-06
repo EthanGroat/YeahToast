@@ -38,8 +38,8 @@ class Interface:
         self.x_current = self.screen_surf.get_rect().centerx
         self.y_current = self.screen_surf.get_rect().centery
 
-        self.HappyBread = Bread(sprite='resources/HappyBread.png',
-                                coordinates=(self.x_current, self.y_current))
+        self.HappyBread = Item(sprite='resources/HappyBread.png',
+                               coordinates=(self.x_current, self.y_current))
 
     def show_bread(self, surface):
         self.game_display.blit(self.HappyBread.rotated, surface)
@@ -66,7 +66,7 @@ class Interface:
                 self.HappyBread.translate(0, 7)
 
             self.game_display.fill(white)
-            self.show_bread(self.HappyBread.surface)
+            self.show_bread(self.HappyBread.rect)
 
             pg.display.update()
             self.clock.tick(30)
