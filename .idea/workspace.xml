@@ -3,7 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="81863bc1-748c-4efc-9516-c2348cde7a46" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Toast.py" beforeDir="false" afterPath="$PROJECT_DIR$/Toast.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Yeah.py" beforeDir="false" afterPath="$PROJECT_DIR$/Yeah.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -17,8 +16,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Yeah.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="359">
-              <caret line="79" lean-forward="true" selection-start-line="79" selection-end-line="79" />
+            <state relative-caret-position="206">
+              <caret line="27" column="31" selection-start-line="27" selection-start-column="31" selection-end-line="27" selection-end-column="31" />
             </state>
           </provider>
         </entry>
@@ -26,8 +25,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Toast.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="85">
-              <caret line="5" column="43" lean-forward="true" selection-start-line="5" selection-start-column="43" selection-end-line="5" selection-end-column="43" />
+            <state relative-caret-position="340">
+              <caret line="20" column="76" lean-forward="true" selection-start-line="20" selection-start-column="76" selection-end-line="20" selection-end-column="76" />
             </state>
           </provider>
         </entry>
@@ -158,7 +157,21 @@
       <option name="project" value="LOCAL" />
       <updated>1549429269129</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="further refactoring">
+      <created>1549432138925</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1549432138925</updated>
+    </task>
+    <task id="LOCAL-00004" summary="fixed rotation bounce!">
+      <created>1549437604214</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1549437604214</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -187,20 +200,22 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="refactored code into a more object-oriented approach with a class called Interface encapsulating everything" />
     <MESSAGE value="added color defs for later use and refactored quit_app outside of Interface" />
-    <option name="LAST_COMMIT_MESSAGE" value="added color defs for later use and refactored quit_app outside of Interface" />
+    <MESSAGE value="further refactoring" />
+    <MESSAGE value="fixed rotation bounce!" />
+    <option name="LAST_COMMIT_MESSAGE" value="fixed rotation bounce!" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/Toast.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="5" column="43" lean-forward="true" selection-start-line="5" selection-start-column="43" selection-end-line="5" selection-end-column="43" />
+        <state relative-caret-position="340">
+          <caret line="20" column="76" lean-forward="true" selection-start-line="20" selection-start-column="76" selection-end-line="20" selection-end-column="76" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Yeah.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="359">
-          <caret line="79" lean-forward="true" selection-start-line="79" selection-end-line="79" />
+        <state relative-caret-position="206">
+          <caret line="27" column="31" selection-start-line="27" selection-start-column="31" selection-end-line="27" selection-end-column="31" />
         </state>
       </provider>
     </entry>

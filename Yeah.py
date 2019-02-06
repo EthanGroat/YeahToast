@@ -25,10 +25,10 @@ class Interface:
     def __init__(self):
         pg.init()
 
-        display_width = 800
-        display_height = 600
+        self.display_width = 1100
+        self.display_height = 600
 
-        self.game_display = pg.display.set_mode((display_width, display_height))
+        self.game_display = pg.display.set_mode((self.display_width, self.display_height))
         pg.display.set_caption('Yeah Toast!')
 
         self.clock = pg.time.Clock()
@@ -48,6 +48,8 @@ class Interface:
 
         closed = False
 
+        ground_axis = self.display_height - self.HappyBread.sprite.get_rect().height/2
+
         while not closed:
 
             for event in pg.event.get():
@@ -55,15 +57,20 @@ class Interface:
                     closed = True
 
             # update image surface on controls
+            # these controls give the bread up/down and tumble left/right motion
             key = pg.key.get_pressed()
             if key[pg.K_UP]:
-                self.HappyBread.translate(0, -7)
+                self.HappyBread.translate(0, -9)
             if key[pg.K_LEFT]:
                 self.HappyBread.rotate(6)
+                self.HappyBread.translate(-9, 0)
             if key[pg.K_RIGHT]:
                 self.HappyBread.rotate(-6)
+                self.HappyBread.translate(9, 0)
             if key[pg.K_DOWN]:
-                self.HappyBread.translate(0, 7)
+                if self.HappyBread.center[1] < ground_axis:
+                    self.HappyBread.translate(0, 9)
+            # should add acceleration next
 
             self.game_display.fill(white)
             self.show_bread(self.HappyBread.rect)
