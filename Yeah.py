@@ -41,14 +41,9 @@ class Interface:
         self.HappyBread = Item(sprite='resources/HappyBread.png',
                                coordinates=(self.x_current, self.y_current))
 
-    def show_bread(self, surface):
-        self.game_display.blit(self.HappyBread.rotated, surface)
-
     def mainloop(self):
 
         closed = False
-
-        ground_axis = self.display_height - self.HappyBread.sprite.get_rect().height/2
 
         while not closed:
 
@@ -56,27 +51,35 @@ class Interface:
                 if event.type == pg.QUIT:
                     closed = True
 
-            # update image surface on controls
-            # these controls give the bread up/down and tumble left/right motion
-            key = pg.key.get_pressed()
-            if key[pg.K_UP]:
-                self.HappyBread.translate(0, -9)
-            if key[pg.K_LEFT]:
-                self.HappyBread.rotate(6)
-                self.HappyBread.translate(-9, 0)
-            if key[pg.K_RIGHT]:
-                self.HappyBread.rotate(-6)
-                self.HappyBread.translate(9, 0)
-            if key[pg.K_DOWN]:
-                if self.HappyBread.center[1] < ground_axis:
-                    self.HappyBread.translate(0, 9)
+            self.translate_control(self.HappyBread)
             # should add acceleration next
+            # should add bouncing off of objects/walls
+            # collision detection
 
             self.game_display.fill(white)
             self.show_bread(self.HappyBread.rect)
 
             pg.display.update()
-            self.clock.tick(30)
+            self.clock.tick(48)
+
+    def show_bread(self, surface):
+        self.game_display.blit(self.HappyBread.rotated, surface)
+
+    def translate_control(self, item, translation_sensitivity=9, rotation_sensitivity=6):
+        # these controls give the bread (or any item) up/down and tumble left/right motion
+        ground_axis = self.display_height - item.sprite.get_rect().height / 2
+        key = pg.key.get_pressed()
+        if key[pg.K_UP]:
+            item.translate(0, -translation_sensitivity)
+        if key[pg.K_LEFT]:
+            item.rotate(rotation_sensitivity)
+            item.translate(-translation_sensitivity, 0)
+        if key[pg.K_RIGHT]:
+            item.rotate(-rotation_sensitivity)
+            item.translate(translation_sensitivity, 0)
+        if key[pg.K_DOWN]:
+            if item.center[1] < ground_axis:
+                item.translate(0, translation_sensitivity)
 
 
 if __name__ == "__main__":

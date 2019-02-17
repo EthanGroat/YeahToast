@@ -19,3 +19,29 @@ class Item:
         self.rotation += degrees
         self.rotated = pg.transform.rotate(self.sprite, self.rotation)
         self.rect = self.rotated.get_rect(center=self.center)  # working! :D
+
+
+class AcceleratingItem(Item):
+    def __init__(self, sprite, coordinates, velocity=(0, 0), womega=0):
+        self.velocity = velocity
+        self.omega = womega
+        super().__init__(sprite, coordinates)
+
+    def translate(self, x=0, y=0):
+        self.rect.centerx += x + self.velocity[0]
+        self.rect.centery += y + self.velocity[1]
+        self.center = self.rect.center
+
+    def accelerate(self, x_acceleration, y_acceleration, angular_acceleration):
+        self.velocity[0] += x_acceleration
+        self.velocity[1] += y_acceleration
+        self.omega += angular_acceleration
+
+    def smooth_translate(self, x, y):
+        pass
+
+    def smooth_rotate(self, degrees):
+        pass
+
+
+# class GravitationallyAffectedItem(AcceleratingItem):
