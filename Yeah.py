@@ -2,7 +2,6 @@
 
 from Toast import *
 
-
 # color definition triplets
 black = (0, 0, 0)
 white = (255, 255, 255)
@@ -38,8 +37,8 @@ class Interface:
         self.x_current = self.screen_surf.get_rect().centerx
         self.y_current = self.screen_surf.get_rect().centery
 
-        self.HappyBread = Item(sprite='resources/HappyBread.png',
-                               coordinates=(self.x_current, self.y_current))
+        self.HappyBread = AcceleratingItem(sprite='resources/HappyBread.png',
+                                           coordinates=(self.x_current, self.y_current))
 
     def mainloop(self):
 
@@ -51,8 +50,8 @@ class Interface:
                 if event.type == pg.QUIT:
                     closed = True
 
-            self.translate_control(self.HappyBread)
-            # should add acceleration next
+            # self.translate_control(self.HappyBread)
+            self.accelerate_control(self.HappyBread)
             # should add bouncing off of objects/walls
             # collision detection
 
@@ -81,9 +80,27 @@ class Interface:
             if item.center[1] < ground_axis:
                 item.translate(0, translation_sensitivity)
 
+    def accelerate_control(self, item, translation_sensitivity=1, rotation_sensitivity=1):
+        # these controls give the item smooth acceleration controls
+        # ground_axis = self.display_height - item.sprite.get_rect().height / 2
+        key = pg.key.get_pressed()
+        if key[pg.K_w]:
+            item.accelerate(0, -translation_sensitivity)
+        if key[pg.K_a]:
+            item.accelerate(-translation_sensitivity, 0)
+        if key[pg.K_s]:
+            item.accelerate(0, translation_sensitivity)
+        if key[pg.K_d]:
+            item.accelerate(translation_sensitivity, 0)
+        if key[pg.K_LEFT]:
+            item.accelerate(0, 0, rotation_sensitivity)
+        if key[pg.K_RIGHT]:
+            item.accelerate(0, 0, -rotation_sensitivity)
+        # if item.center[1] < ground_axis:
+        item.translate()  # updates after velocity has been updated
+
 
 if __name__ == "__main__":
-
     a = Interface()
     a.mainloop()
     quit_app()
