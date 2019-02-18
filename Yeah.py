@@ -95,6 +95,11 @@ class Interface:
             item.accelerate(0, 0, rotation_sensitivity)
         if key[pg.K_RIGHT]:
             item.accelerate(0, 0, -rotation_sensitivity)
+        if key[pg.K_UP]:
+            item.accelerate_forward(translation_sensitivity)
+        if key[pg.K_DOWN]:
+            item.accelerate_forward(-translation_sensitivity)
+
         # if item.center[1] < ground_axis:
         item.translate()  # updates after velocity has been updated
 
