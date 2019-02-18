@@ -32,13 +32,12 @@ class Interface:
 
         self.clock = pg.time.Clock()
 
-        # self.x_current = display_width/3
         self.screen_surf = pg.display.get_surface()
-        self.x_current = self.screen_surf.get_rect().centerx
-        self.y_current = self.screen_surf.get_rect().centery
+        self.x_mid = self.screen_surf.get_rect().centerx
+        self.y_mid = self.screen_surf.get_rect().centery
 
         self.HappyBread = AcceleratingItem(sprite='resources/HappyBread.png',
-                                           coordinates=(self.x_current, self.y_current))
+                                           coordinates=(float(self.x_mid), float(self.y_mid)))
 
     def mainloop(self):
 
@@ -80,7 +79,7 @@ class Interface:
             if item.center[1] < ground_axis:
                 item.translate(0, translation_sensitivity)
 
-    def accelerate_control(self, item, translation_sensitivity=0.5, rotation_sensitivity=0.5):
+    def accelerate_control(self, item, translation_sensitivity=0.38, rotation_sensitivity=0.5):
         # these controls give the item smooth wasd acceleration controls and left/right rotational acceleration
         # ground_axis = self.display_height - item.sprite.get_rect().height / 2
         key = pg.key.get_pressed()
