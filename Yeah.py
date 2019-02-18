@@ -80,8 +80,8 @@ class Interface:
             if item.center[1] < ground_axis:
                 item.translate(0, translation_sensitivity)
 
-    def accelerate_control(self, item, translation_sensitivity=1, rotation_sensitivity=1):
-        # these controls give the item smooth acceleration controls
+    def accelerate_control(self, item, translation_sensitivity=0.5, rotation_sensitivity=0.5):
+        # these controls give the item smooth wasd acceleration controls and left/right rotational acceleration
         # ground_axis = self.display_height - item.sprite.get_rect().height / 2
         key = pg.key.get_pressed()
         if key[pg.K_w]:
