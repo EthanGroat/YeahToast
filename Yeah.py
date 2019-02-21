@@ -42,6 +42,7 @@ class Interface:
     def mainloop(self):
 
         closed = False
+        mode = "accelerate"
 
         while not closed:
 
@@ -49,40 +50,55 @@ class Interface:
                 if event.type == pg.QUIT:
                     closed = True
 
-            # self.translate_control(self.HappyBread)
-            self.accelerate_control(self.HappyBread)
+            key = pg.key.get_pressed()
+
+            # modes:
+            if key[pg.K_1]:
+                mode = "accelerate"
+            if key[pg.K_2]:
+                mode = "translate"
+                self.HappyBread.reset_velocity()
+            # freeze and reset
+            if key[pg.K_f]:
+                self.HappyBread.freeze()
+            if key[pg.K_r]:
+                self.HappyBread.reset_position(self.x_mid, self.y_mid)
+
+            # player control:
+            if mode == "translate":
+                self.translate_control(self.HappyBread, key)
+            elif mode == "accelerate":
+                self.accelerate_control(self.HappyBread, key)
             # should add bouncing off of objects/walls
-            # collision detection
+            # and collision detection
 
             self.game_display.fill(white)
             self.show_bread(self.HappyBread.rect)
 
             pg.display.update()
-            self.clock.tick(48)
+            self.clock.tick(48)  # Hobbit framerate
 
     def show_bread(self, surface):
         self.game_display.blit(self.HappyBread.rotated, surface)
 
-    def translate_control(self, item, translation_sensitivity=9, rotation_sensitivity=6):
+    def translate_control(self, item, key, translation_sensitivity=10, rotation_sensitivity=6.4):
         # these controls give the bread (or any item) up/down and tumble left/right motion
         ground_axis = self.display_height - item.sprite.get_rect().height / 2
-        key = pg.key.get_pressed()
-        if key[pg.K_UP]:
+        if key[pg.K_UP] or key[pg.K_w]:
             item.translate(0, -translation_sensitivity)
-        if key[pg.K_LEFT]:
+        if key[pg.K_LEFT] or key[pg.K_a]:
             item.rotate(rotation_sensitivity)
             item.translate(-translation_sensitivity, 0)
-        if key[pg.K_RIGHT]:
-            item.rotate(-rotation_sensitivity)
-            item.translate(translation_sensitivity, 0)
-        if key[pg.K_DOWN]:
+        if key[pg.K_DOWN] or key[pg.K_s]:
             if item.center[1] < ground_axis:
                 item.translate(0, translation_sensitivity)
+        if key[pg.K_RIGHT] or key[pg.K_d]:
+            item.rotate(-rotation_sensitivity)
+            item.translate(translation_sensitivity, 0)
 
-    def accelerate_control(self, item, translation_sensitivity=0.38, rotation_sensitivity=0.5):
+    def accelerate_control(self, item, key, translation_sensitivity=0.38, rotation_sensitivity=0.5):
         # these controls give the item smooth wasd acceleration controls and left/right rotational acceleration
         # ground_axis = self.display_height - item.sprite.get_rect().height / 2
-        key = pg.key.get_pressed()
         if key[pg.K_w]:
             item.accelerate(0, -translation_sensitivity)
         if key[pg.K_a]:

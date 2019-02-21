@@ -30,11 +30,20 @@ class AcceleratingItem(Item):
         self.omega = womega
         super().__init__(sprite, coordinates)
 
-    def translate(self, x=0.0, y=0.0, phi=0.0):  # updates position incrementally - serves as the update() function
+    def translate(self, x=0.0, y=0.0, phi=0.0):
+        """updates position incrementally - essentially serves as the update() function"""
         self.center[0] += x + self.velocity[0]  # center tracks exact floating point positions
         self.center[1] += y + self.velocity[1]
         self.rect.center = tuple(self.center)  # this assignment updates the pygame sprite placement coordinates
         self.rotate(phi + self.omega)  # exact degrees
+
+    def teleport(self, x, y, reset_rotation=False):
+        """translate to an exact location"""
+        self.center[0] = x
+        self.center[1] = y
+        self.rect.center = tuple(self.center)  # update pygame sprite placement
+        if reset_rotation:
+            self.rotate(-self.rotation)
 
     def accelerate(self, x_acceleration=0.0, y_acceleration=0.0, angular_acceleration=0.0):
         self.velocity[0] += x_acceleration
@@ -54,6 +63,18 @@ class AcceleratingItem(Item):
 
     def reset_velocity(self, velocity=(0.0, 0.0)):
         self.velocity[0], self.velocity[1] = velocity[0], velocity[1]
+
+    def reset_angular_velocity(self, omega=0.0):
+        self.omega = omega
+
+    def freeze(self):
+        self.reset_velocity()
+        self.reset_angular_velocity()
+
+    def reset_position(self, x=500, y=350):
+        self.freeze()
+        self.teleport(x, y, reset_rotation=True)
+        # self.smooth_translate() to origin instead of teleport
 
     def smooth_translate(self, x, y):
         pass

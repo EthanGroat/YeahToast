@@ -21,8 +21,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Yeah.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="121">
-              <caret line="90" column="55" lean-forward="true" selection-start-line="90" selection-start-column="55" selection-end-line="90" selection-end-column="55" />
+            <state relative-caret-position="17">
+              <caret line="36" column="51" lean-forward="true" selection-start-line="36" selection-start-column="51" selection-end-line="36" selection-end-column="51" />
             </state>
           </provider>
         </entry>
@@ -30,8 +30,11 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Toast.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="323">
-              <caret line="28" selection-start-line="28" selection-end-line="28" />
+            <state relative-caret-position="238">
+              <caret line="77" lean-forward="true" selection-start-line="77" selection-end-line="77" />
+              <folding>
+                <element signature="e#0#19#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -61,8 +64,8 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/Toast.py" />
         <option value="$PROJECT_DIR$/Yeah.py" />
+        <option value="$PROJECT_DIR$/Toast.py" />
       </list>
     </option>
   </component>
@@ -211,11 +214,25 @@
       <option name="project" value="LOCAL" />
       <updated>1550453962846</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="Floating point positions&#10;Even more precision&#10;Also slightly more concise code&#10;And fixed a logical error where integer rotation was still a thing">
+      <created>1550456712827</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1550456712827</updated>
+    </task>
+    <task id="LOCAL-00011" summary="Flight controls (forward)">
+      <created>1550459705659</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1550459705660</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="57" y="-4" width="1309" height="772" extended-state="6" />
+    <frame x="56" y="-14" width="1311" height="783" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" weight="0.24475524" />
@@ -256,20 +273,25 @@
     <MESSAGE value="Refactored controls, added acceleration, velocity&#10;Refactored all the control if statements into a single method that the main loop calls for a particular control scheme.  More control schemes will be added taking advantage of the other change here:&#10;Added acceleration and velocity (including angular for both) to a class that extends Item" />
     <MESSAGE value="Added acceleration controls&#10;Also bug fixes and further increased utility of functions" />
     <MESSAGE value="Floating point velocities &amp; accelerations&#10;More precise tracking and updating of velocities using floats,&#10;but not position yet, so effective translational velocity is&#10;still an integer multiple." />
-    <option name="LAST_COMMIT_MESSAGE" value="Floating point velocities &amp; accelerations&#10;More precise tracking and updating of velocities using floats,&#10;but not position yet, so effective translational velocity is&#10;still an integer multiple." />
+    <MESSAGE value="Floating point positions&#10;Even more precision&#10;Also slightly more concise code&#10;And fixed a logical error where integer rotation was still a thing" />
+    <MESSAGE value="Flight controls (forward)" />
+    <option name="LAST_COMMIT_MESSAGE" value="Flight controls (forward)" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/Toast.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="323">
-          <caret line="28" selection-start-line="28" selection-end-line="28" />
+        <state relative-caret-position="238">
+          <caret line="77" lean-forward="true" selection-start-line="77" selection-end-line="77" />
+          <folding>
+            <element signature="e#0#19#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Yeah.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="121">
-          <caret line="90" column="55" lean-forward="true" selection-start-line="90" selection-start-column="55" selection-end-line="90" selection-end-column="55" />
+        <state relative-caret-position="17">
+          <caret line="36" column="51" lean-forward="true" selection-start-line="36" selection-start-column="51" selection-end-line="36" selection-end-column="51" />
         </state>
       </provider>
     </entry>

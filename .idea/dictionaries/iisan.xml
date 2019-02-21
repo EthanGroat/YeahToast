@@ -2,7 +2,9 @@
   <dictionary name="iisan">
     <words>
       <w>blitting</w>
+      <w>framerate</w>
       <w>pygame</w>
+      <w>teleport</w>
       <w>wasd</w>
       <w>woah</w>
       <w>womega</w>
