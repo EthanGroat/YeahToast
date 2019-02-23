@@ -2,10 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="81863bc1-748c-4efc-9516-c2348cde7a46" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/dictionaries/iisan.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dictionaries/iisan.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Toast.py" beforeDir="false" afterPath="$PROJECT_DIR$/Toast.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Yeah.py" beforeDir="false" afterPath="$PROJECT_DIR$/Yeah.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -18,20 +16,20 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Yeah.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="17">
-              <caret line="36" column="51" lean-forward="true" selection-start-line="36" selection-start-column="51" selection-end-line="36" selection-end-column="51" />
+            <state relative-caret-position="119">
+              <caret line="36" column="56" lean-forward="true" selection-start-line="36" selection-start-column="56" selection-end-line="36" selection-end-column="56" />
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Toast.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="238">
-              <caret line="77" lean-forward="true" selection-start-line="77" selection-end-line="77" />
+            <state relative-caret-position="364">
+              <caret line="97" lean-forward="true" selection-start-line="97" selection-end-line="97" />
               <folding>
                 <element signature="e#0#19#0" expanded="true" />
               </folding>
@@ -228,19 +226,25 @@
       <option name="project" value="LOCAL" />
       <updated>1550459705660</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="Switch modes on the fly, reset and freeze buttons&#10;More methods like teleport (translate to an absolute location rather than a relative location) and freeze (reset velocity and rotational velocity)">
+      <created>1550789151377</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1550789151378</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="ToolWindowManager">
     <frame x="56" y="-14" width="1311" height="783" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" weight="0.24475524" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" weight="0.32944834" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.3297546" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.32055214" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.32055214" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -275,23 +279,25 @@
     <MESSAGE value="Floating point velocities &amp; accelerations&#10;More precise tracking and updating of velocities using floats,&#10;but not position yet, so effective translational velocity is&#10;still an integer multiple." />
     <MESSAGE value="Floating point positions&#10;Even more precision&#10;Also slightly more concise code&#10;And fixed a logical error where integer rotation was still a thing" />
     <MESSAGE value="Flight controls (forward)" />
-    <option name="LAST_COMMIT_MESSAGE" value="Flight controls (forward)" />
+    <MESSAGE value="Switch modes on the fly, reset and freeze buttons&#10;More methods like teleport (translate to an absolute location rather than a relative location) and freeze (reset velocity and rotational velocity)" />
+    <MESSAGE value="NewtonianItem added, extending AcceleratingItem&#10;Force vector, mass float: used to calculate acceleration (which is still just a method to add to velocity and not a variable)" />
+    <option name="LAST_COMMIT_MESSAGE" value="NewtonianItem added, extending AcceleratingItem&#10;Force vector, mass float: used to calculate acceleration (which is still just a method to add to velocity and not a variable)" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/Toast.py">
+    <entry file="file://$PROJECT_DIR$/Yeah.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="77" lean-forward="true" selection-start-line="77" selection-end-line="77" />
-          <folding>
-            <element signature="e#0#19#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="119">
+          <caret line="36" column="56" lean-forward="true" selection-start-line="36" selection-start-column="56" selection-end-line="36" selection-end-column="56" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Yeah.py">
+    <entry file="file://$PROJECT_DIR$/Toast.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
-          <caret line="36" column="51" lean-forward="true" selection-start-line="36" selection-start-column="51" selection-end-line="36" selection-end-column="51" />
+        <state relative-caret-position="364">
+          <caret line="97" lean-forward="true" selection-start-line="97" selection-end-line="97" />
+          <folding>
+            <element signature="e#0#19#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

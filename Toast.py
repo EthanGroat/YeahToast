@@ -30,10 +30,10 @@ class AcceleratingItem(Item):
         self.omega = womega
         super().__init__(sprite, coordinates)
 
-    def translate(self, x=0.0, y=0.0, phi=0.0):
+    def translate(self, x_by=0.0, y_by=0.0, phi=0.0):
         """updates position incrementally - essentially serves as the update() function"""
-        self.center[0] += x + self.velocity[0]  # center tracks exact floating point positions
-        self.center[1] += y + self.velocity[1]
+        self.center[0] += x_by + self.velocity[0]  # center tracks exact floating point positions
+        self.center[1] += y_by + self.velocity[1]
         self.rect.center = tuple(self.center)  # this assignment updates the pygame sprite placement coordinates
         self.rotate(phi + self.omega)  # exact degrees
 
@@ -61,15 +61,16 @@ class AcceleratingItem(Item):
         self.accelerate(x_acc, y_acc, angular_acc)
         self.translate()
 
-    def reset_velocity(self, velocity=(0.0, 0.0)):
+    def reset_velocity(self, velocity=(0.0, 0.0), reset_angular=False):
         self.velocity[0], self.velocity[1] = velocity[0], velocity[1]
+        if reset_angular:
+            self.reset_angular_velocity()
 
     def reset_angular_velocity(self, omega=0.0):
         self.omega = omega
 
     def freeze(self):
-        self.reset_velocity()
-        self.reset_angular_velocity()
+        self.reset_velocity((0, 0), reset_angular=True)
 
     def reset_position(self, x=500, y=350):
         self.freeze()
@@ -81,6 +82,24 @@ class AcceleratingItem(Item):
 
     def smooth_rotate(self, degrees):
         pass
+
+
+class NewtonianItem(AcceleratingItem):
+    def __init__(self, sprite, coordinates, mass=1.0, velocity=(0.0, 0.0), womega=0.0):
+        self.mass = mass
+        self.netForces = [0.0, 0.0]
+        super().__init__(sprite, coordinates, velocity, womega)
+
+    def set_net_force(self, net_x, net_y):  # takes coordinate floats and puts them in the list (Force vector)
+        self.netForces = [net_x, net_y]
+
+    def set_mass(self, mass):
+        self.mass = mass
+
+    def accelerate(self, x_extra=0.0, y_extra=0.0, angular_acceleration=0.0):  # computes using forces and mass
+        self.velocity[0] += x_extra + self.netForces[0]/self.mass
+        self.velocity[1] += y_extra + self.netForces[1]/self.mass
+        self.omega += angular_acceleration
 
 
 # class GravitationallyAffectedItem(AcceleratingItem):
