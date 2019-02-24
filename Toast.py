@@ -11,11 +11,11 @@ class Item:
         self.rect = self.rotated.get_rect(center=coordinates)
         # this is a rectangle used as a proxy for re-centering and blitting the sprite to the right location
 
-    def translate(self, x=0.0, y=0.0, phi=0.0):  # used for both rotation and translation
+    def translate(self, x_by=0.0, y_by=0.0, phi=0.0):  # used for both rotation and translation
         # defaults to zero for interoperability in updating Items
-        self.rect.centerx += x
-        self.rect.centery += y
-        self.center = self.rect.center
+        self.rect.centerx += x_by
+        self.rect.centery += y_by
+        self.center = list(self.rect.center)
         self.rotate(phi)
 
     def rotate(self, degrees):
@@ -31,14 +31,14 @@ class AcceleratingItem(Item):
         super().__init__(sprite, coordinates)
 
     def translate(self, x_by=0.0, y_by=0.0, phi=0.0):
-        """updates position incrementally - essentially serves as the update() function"""
+        """updates position incrementally using relative coordinates"""
         self.center[0] += x_by + self.velocity[0]  # center tracks exact floating point positions
         self.center[1] += y_by + self.velocity[1]
         self.rect.center = tuple(self.center)  # this assignment updates the pygame sprite placement coordinates
         self.rotate(phi + self.omega)  # exact degrees
 
     def teleport(self, x, y, reset_rotation=False):
-        """translate to an exact location"""
+        """translates to an exact location"""
         self.center[0] = x
         self.center[1] = y
         self.rect.center = tuple(self.center)  # update pygame sprite placement
@@ -72,13 +72,25 @@ class AcceleratingItem(Item):
     def freeze(self):
         self.reset_velocity((0, 0), reset_angular=True)
 
-    def reset_position(self, x=500, y=350):
+    def reset_position(self, x=550, y=300):
         self.freeze()
         self.teleport(x, y, reset_rotation=True)
         # self.smooth_translate() to origin instead of teleport
 
-    def smooth_translate(self, x, y):
-        pass
+    def throw(self, x, y, speed=1.0):  # fast translate to a specific point
+        # if point is moving, end with continued velocity of speed*velocity of the moving point
+        delta_x = x - self.center[0]
+        delta_y = y - self.center[1]
+        self.velocity = [delta_x*speed, delta_y*speed]
+
+    def smooth_translate(self, x, y, sensitivity=3.0, damping_ratio=0.2):
+        """Uses damped simple harmonic motion to smoothly move toward a specified absolute location"""
+        delta_x = x - self.center[0]
+        delta_y = y - self.center[1]
+        k = sensitivity/50.0
+        # the order of these operations actually matters to how accurate the representation of harmonic oscillation is
+        self.accelerate(k * delta_x, k * delta_y)
+        self.accelerate(-damping_ratio * self.velocity[0], -damping_ratio * self.velocity[1])
 
     def smooth_rotate(self, degrees):
         pass
@@ -90,8 +102,12 @@ class NewtonianItem(AcceleratingItem):
         self.netForces = [0.0, 0.0]
         super().__init__(sprite, coordinates, velocity, womega)
 
-    def set_net_force(self, net_x, net_y):  # takes coordinate floats and puts them in the list (Force vector)
+    def set_net_forces(self, net_x, net_y):  # takes coordinate floats and puts them in the Force vector
         self.netForces = [net_x, net_y]
+
+    def apply_force(self, x, y):  # adds to netForces
+        self.netForces[0] += x
+        self.netForces[1] += y
 
     def set_mass(self, mass):
         self.mass = mass
@@ -101,5 +117,12 @@ class NewtonianItem(AcceleratingItem):
         self.velocity[1] += y_extra + self.netForces[1]/self.mass
         self.omega += angular_acceleration
 
+    # this is the class where update() becomes important
+    def update(self, x_force=0.0, y_force=0.0, angular_acc=0.0):
+        # takes the x and y components of an applied force as arguments
+        # (optional as update() can be called after any number of calls of apply_force() in the game loop)
+        self.apply_force(x_force, y_force)
+        self.accelerate()
+        self.translate()
+        self.set_net_forces(0.0, 0.0)
 
-# class GravitationallyAffectedItem(AcceleratingItem):

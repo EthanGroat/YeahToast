@@ -39,14 +39,15 @@ class Interface:
         self.HappyBread = AcceleratingItem(sprite='resources/HappyBread.png',
                                            coordinates=(float(self.x_mid), float(self.y_mid)))
 
-    def mainloop(self):
+    def game_loop(self):
 
         closed = False
         mode = "accelerate"
 
         while not closed:
 
-            for event in pg.event.get():
+            ev = pg.event.get()
+            for event in ev:
                 if event.type == pg.QUIT:
                     closed = True
 
@@ -66,9 +67,9 @@ class Interface:
 
             # player control:
             if mode == "translate":
-                self.translate_control(self.HappyBread, key)
+                self.translate_control(self.HappyBread, ev, key)
             elif mode == "accelerate":
-                self.accelerate_control(self.HappyBread, key)
+                self.accelerate_control(self.HappyBread, ev, key)
             # should add bouncing off of objects/walls
             # and collision detection
 
@@ -81,7 +82,7 @@ class Interface:
     def show_bread(self, surface):
         self.game_display.blit(self.HappyBread.rotated, surface)
 
-    def translate_control(self, item, key, translation_sensitivity=10, rotation_sensitivity=6.4):
+    def translate_control(self, item, events, key, translation_sensitivity=10, rotation_sensitivity=6.4):
         # these controls give the bread (or any item) up/down and tumble left/right motion
         ground_axis = self.display_height - item.sprite.get_rect().height / 2
         if key[pg.K_UP] or key[pg.K_w]:
@@ -95,8 +96,14 @@ class Interface:
         if key[pg.K_RIGHT] or key[pg.K_d]:
             item.rotate(-rotation_sensitivity)
             item.translate(translation_sensitivity, 0)
+        # mouse controls
+        if pg.mouse.get_pressed()[0]:
+            spot = pg.mouse.get_pos()
+            print(spot)
+            item.teleport(spot[0], spot[1])
+            item.rotate(item.omega)  # silly rotation, press freeze to stop it
 
-    def accelerate_control(self, item, key, translation_sensitivity=0.38, rotation_sensitivity=0.5):
+    def accelerate_control(self, item, events, key, translation_sensitivity=0.38, rotation_sensitivity=0.5):
         # these controls give the item smooth wasd acceleration controls and left/right rotational acceleration
         # ground_axis = self.display_height - item.sprite.get_rect().height / 2
         if key[pg.K_w]:
@@ -115,12 +122,14 @@ class Interface:
             item.accelerate_forward(translation_sensitivity)
         if key[pg.K_DOWN]:
             item.accelerate_forward(-translation_sensitivity)
-
-        # if item.center[1] < ground_axis:
+        # mouse controls
+        if pg.mouse.get_pressed()[0]:
+            spot = pg.mouse.get_pos()
+            item.smooth_translate(spot[0], spot[1])
         item.translate()  # updates after velocity has been updated
 
 
 if __name__ == "__main__":
     a = Interface()
-    a.mainloop()
+    a.game_loop()
     quit_app()
