@@ -3,12 +3,14 @@ import math
 
 
 class Item:
-    def __init__(self, sprite, coordinates):
+    def __init__(self, sprite=None, coordinates=(0, 0), width=250.0):
+        if sprite:
+            self.sprite = pg.image.load(sprite)
+            self.rotated = self.sprite
+            self.rect = self.rotated.get_rect(center=coordinates)
         self.center = list(coordinates)  # internal coordinates used to remap surface, takes floats
         self.rotation = 0.0  # in degrees
-        self.sprite = pg.image.load(sprite)
-        self.rotated = self.sprite
-        self.rect = self.rotated.get_rect(center=coordinates)
+        self.radius = width / 2
         # this is a rectangle used as a proxy for re-centering and blitting the sprite to the right location
 
     def translate(self, x_by=0.0, y_by=0.0, phi=0.0):  # used for both rotation and translation
@@ -23,12 +25,21 @@ class Item:
         self.rotated = pg.transform.rotate(self.sprite, self.rotation)
         self.rect = self.rotated.get_rect(center=self.center)  # working! :D
 
+    def distance_squared(self, target):
+        return (self.center[0] - target.center[0])**2 + (self.center[1] - target.center[1])**2
+
+    def collides_with(self, target):
+        if self.distance_squared(target) < (self.radius + target.radius)**2:
+            return True
+        else:
+            return False
+
 
 class AcceleratingItem(Item):
-    def __init__(self, sprite, coordinates, velocity=(0.0, 0.0), womega=0.0):
+    def __init__(self, sprite=None, coordinates=(0, 0), width=250.0, velocity=(0.0, 0.0), womega=0.0):
         self.velocity = list(velocity)  # lists are mutable, tuples aren't
         self.omega = womega
-        super().__init__(sprite, coordinates)
+        super().__init__(sprite, coordinates, width)
 
     def translate(self, x_by=0.0, y_by=0.0, phi=0.0):
         """updates position incrementally using relative coordinates"""
@@ -97,10 +108,10 @@ class AcceleratingItem(Item):
 
 
 class NewtonianItem(AcceleratingItem):
-    def __init__(self, sprite, coordinates, mass=1.0, velocity=(0.0, 0.0), womega=0.0):
+    def __init__(self, sprite=None, coordinates=(0, 0), width=250.0, mass=1.0, velocity=(0.0, 0.0), womega=0.0):
         self.mass = mass
         self.netForces = [0.0, 0.0]
-        super().__init__(sprite, coordinates, velocity, womega)
+        super().__init__(sprite, coordinates, width, velocity, womega)
 
     def set_net_forces(self, net_x, net_y):  # takes coordinate floats and puts them in the Force vector
         self.netForces = [net_x, net_y]

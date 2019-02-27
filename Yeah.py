@@ -11,7 +11,7 @@ blue = (0, 0, 255)
 cyan = (0, 255, 255)
 yellow = (255, 255, 0)
 magenta = (255, 0, 255)
-violet = (128, 0, 128)
+violet = (128, 0, 144)
 
 
 def quit_app():
@@ -36,8 +36,9 @@ class Interface:
         self.x_mid = self.screen_surf.get_rect().centerx
         self.y_mid = self.screen_surf.get_rect().centery
 
-        self.HappyBread = AcceleratingItem(sprite='resources/HappyBread.png',
-                                           coordinates=(float(self.x_mid), float(self.y_mid)))
+        self.HappyBread = AcceleratingItem(sprite='resources/HappyBread_wT.png',
+                                           coordinates=(self.x_mid, self.y_mid))
+        self.Toaster = Item(sprite='resources/Toaster.png', coordinates=(120, 140))
 
     def game_loop(self):
 
@@ -73,14 +74,14 @@ class Interface:
             # should add bouncing off of objects/walls
             # and collision detection
 
-            self.game_display.fill(white)
-            self.show_bread(self.HappyBread.rect)
+            self.game_display.fill(violet)
+            self.show(self.HappyBread)
 
             pg.display.update()
             self.clock.tick(48)  # Hobbit framerate
 
-    def show_bread(self, surface):
-        self.game_display.blit(self.HappyBread.rotated, surface)
+    def show(self, item):
+        self.game_display.blit(item.rotated, item.rect)
 
     def translate_control(self, item, events, key, translation_sensitivity=10, rotation_sensitivity=6.4):
         # these controls give the bread (or any item) up/down and tumble left/right motion
@@ -127,6 +128,11 @@ class Interface:
             spot = pg.mouse.get_pos()
             item.smooth_translate(spot[0], spot[1])
         item.translate()  # updates after velocity has been updated
+
+
+#   modes for friction,
+#   boundaries,
+#   automatic fly back
 
 
 if __name__ == "__main__":
