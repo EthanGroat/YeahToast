@@ -25,7 +25,10 @@ class Item:
         self.rotated = pg.transform.rotate(self.sprite, self.rotation)
         self.rect = self.rotated.get_rect(center=self.center)  # working! :D
 
-    def distance_squared(self, target):
+    def center_to_string(self):
+        return "({:.1f}, {:.1f})".format(self.center[0], self.center[1])
+
+    def distance_squared(self, target):  # squaring is easier than square-rooting elsewhere
         return (self.center[0] - target.center[0])**2 + (self.center[1] - target.center[1])**2
 
     def collides_with(self, target):

@@ -24,7 +24,7 @@ class Interface:
     def __init__(self):
         pg.init()
 
-        self.display_width = 1100
+        self.display_width = 1200
         self.display_height = 600
 
         self.game_display = pg.display.set_mode((self.display_width, self.display_height))
@@ -36,9 +36,11 @@ class Interface:
         self.x_mid = self.screen_surf.get_rect().centerx
         self.y_mid = self.screen_surf.get_rect().centery
 
-        self.HappyBread = AcceleratingItem(sprite='resources/HappyBread_wT.png',
-                                           coordinates=(self.x_mid, self.y_mid))
-        self.Toaster = Item(sprite='resources/Toaster.png', coordinates=(120, 140))
+        self.HappyBread = NewtonianItem(sprite='resources/HappyBread_wT.png',
+                                        coordinates=(self.x_mid, self.y_mid))
+        self.Toaster = Item(sprite='resources/Toaster.png',
+                            coordinates=(256, 224))
+        self.items = [self.Toaster, self.HappyBread]
 
     def game_loop(self):
 
@@ -71,17 +73,25 @@ class Interface:
                 self.translate_control(self.HappyBread, ev, key)
             elif mode == "accelerate":
                 self.accelerate_control(self.HappyBread, ev, key)
+
             # should add bouncing off of objects/walls
-            # and collision detection
+
+            # collision detection:
+            if self.items[0].collides_with(self.items[1]):
+                print("collision at " + self.HappyBread.center_to_string())
 
             self.game_display.fill(violet)
-            self.show(self.HappyBread)
+            self.show_all_items()
 
             pg.display.update()
             self.clock.tick(48)  # Hobbit framerate
 
     def show(self, item):
         self.game_display.blit(item.rotated, item.rect)
+
+    def show_all_items(self):
+        for item in self.items:
+            self.show(item)
 
     def translate_control(self, item, events, key, translation_sensitivity=10, rotation_sensitivity=6.4):
         # these controls give the bread (or any item) up/down and tumble left/right motion

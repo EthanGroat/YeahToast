@@ -17,20 +17,20 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Yeah.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="313">
-              <caret line="78" lean-forward="true" selection-start-line="78" selection-end-line="78" />
+            <state relative-caret-position="136">
+              <caret line="74" selection-start-line="74" selection-end-line="79" />
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Toast.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="257">
-              <caret line="33" selection-start-line="33" selection-end-line="33" />
+            <state relative-caret-position="153">
+              <caret line="30" selection-start-line="30" selection-end-line="30" />
               <folding>
                 <element signature="e#0#19#0" expanded="true" />
               </folding>
@@ -63,8 +63,8 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/Toast.py" />
         <option value="$PROJECT_DIR$/Yeah.py" />
+        <option value="$PROJECT_DIR$/Toast.py" />
       </list>
     </option>
   </component>
@@ -81,7 +81,20 @@
     <navigator proportions="" version="1">
       <foldersAlwaysOnTop value="true" />
     </navigator>
-    <panes />
+    <panes>
+      <pane id="Scope" />
+      <pane id="ProjectPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="YeahToast" type="b2602c69:ProjectViewProjectNode" />
+              <item name="YeahToast" type="462c0819:PsiDirectoryNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
+    </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
@@ -248,14 +261,21 @@
       <option name="project" value="LOCAL" />
       <updated>1550980096221</updated>
     </task>
-    <option name="localTasksCounter" value="15" />
+    <task id="LOCAL-00015" summary="Refactoring, transparency, collisions groundwork">
+      <created>1551234672813</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1551234672813</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="ToolWindowManager">
     <frame x="56" y="-14" width="1311" height="783" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" weight="0.24475524" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.24475524" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" weight="0.32944834" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -298,23 +318,24 @@
     <MESSAGE value="Switch modes on the fly, reset and freeze buttons&#10;More methods like teleport (translate to an absolute location rather than a relative location) and freeze (reset velocity and rotational velocity)" />
     <MESSAGE value="NewtonianItem added, extending AcceleratingItem&#10;Force vector, mass float: used to calculate acceleration (which is still just a method to add to velocity and not a variable)" />
     <MESSAGE value="More physics groundwork, click and drag" />
-    <option name="LAST_COMMIT_MESSAGE" value="More physics groundwork, click and drag" />
+    <MESSAGE value="Refactoring, transparency, collisions groundwork" />
+    <option name="LAST_COMMIT_MESSAGE" value="Refactoring, transparency, collisions groundwork" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/Toast.py">
+    <entry file="file://$PROJECT_DIR$/Yeah.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="257">
-          <caret line="33" selection-start-line="33" selection-end-line="33" />
-          <folding>
-            <element signature="e#0#19#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="136">
+          <caret line="74" selection-start-line="74" selection-end-line="79" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Yeah.py">
+    <entry file="file://$PROJECT_DIR$/Toast.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="313">
-          <caret line="78" lean-forward="true" selection-start-line="78" selection-end-line="78" />
+        <state relative-caret-position="153">
+          <caret line="30" selection-start-line="30" selection-end-line="30" />
+          <folding>
+            <element signature="e#0#19#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
