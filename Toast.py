@@ -20,6 +20,14 @@ class Item:
         self.center = list(self.rect.center)
         self.rotate(phi)
 
+    def teleport(self, x, y, reset_rotation=False):
+        """translates to an exact location"""
+        self.center[0] = x
+        self.center[1] = y
+        self.rect.center = tuple(self.center)  # update pygame sprite placement
+        if reset_rotation:
+            self.rotate(-self.rotation)
+
     def rotate(self, degrees):
         self.rotation += degrees
         self.rotated = pg.transform.rotate(self.sprite, self.rotation)
@@ -41,7 +49,7 @@ class Item:
 class AcceleratingItem(Item):
     def __init__(self, sprite=None, coordinates=(0, 0), width=250.0, velocity=(0.0, 0.0), womega=0.0):
         self.velocity = list(velocity)  # lists are mutable, tuples aren't
-        self.omega = womega
+        self.omega = womega  # angular velocity
         super().__init__(sprite, coordinates, width)
 
     def translate(self, x_by=0.0, y_by=0.0, phi=0.0):
@@ -50,14 +58,6 @@ class AcceleratingItem(Item):
         self.center[1] += y_by + self.velocity[1]
         self.rect.center = tuple(self.center)  # this assignment updates the pygame sprite placement coordinates
         self.rotate(phi + self.omega)  # exact degrees
-
-    def teleport(self, x, y, reset_rotation=False):
-        """translates to an exact location"""
-        self.center[0] = x
-        self.center[1] = y
-        self.rect.center = tuple(self.center)  # update pygame sprite placement
-        if reset_rotation:
-            self.rotate(-self.rotation)
 
     def accelerate(self, x_acceleration=0.0, y_acceleration=0.0, angular_acceleration=0.0):
         self.velocity[0] += x_acceleration
@@ -91,8 +91,8 @@ class AcceleratingItem(Item):
         self.teleport(x, y, reset_rotation=True)
         # self.smooth_translate() to origin instead of teleport
 
-    def throw(self, x, y, speed=1.0):  # fast translate to a specific point
-        # if point is moving, end with continued velocity of speed*velocity of the moving point
+    def throw(self, x, y, speed=1.0):  # fast translate toward a specific point
+        # if point is moving and speed=1, end with continued velocity of speed*velocity of the moving point
         delta_x = x - self.center[0]
         delta_y = y - self.center[1]
         self.velocity = [delta_x*speed, delta_y*speed]
@@ -106,8 +106,14 @@ class AcceleratingItem(Item):
         self.accelerate(k * delta_x, k * delta_y)
         self.accelerate(-damping_ratio * self.velocity[0], -damping_ratio * self.velocity[1])
 
-    def smooth_rotate(self, degrees):
-        pass
+    def smooth_rotate(self, target_angular_velocity, sensitivity=100.0):  # 100 is max sensitivity - instant
+        k = sensitivity/100.0  # sensitivity above 15 is quite fast
+        angular_acceleration = k * (target_angular_velocity - self.omega)
+        self.accelerate(0, 0, angular_acceleration)
+        if not self.omega == 0:
+            if abs(self.omega) < 0.001:
+                self.omega = 0
+            print(self.omega)
 
 
 class NewtonianItem(AcceleratingItem):

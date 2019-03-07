@@ -19,7 +19,7 @@ def quit_app():
     quit()
 
 
-class Interface:
+class Game:
 
     def __init__(self):
         pg.init()
@@ -42,10 +42,13 @@ class Interface:
                             coordinates=(256, 224))
         self.items = [self.Toaster, self.HappyBread]
 
+        # do items[] then append and assign in the same line?
+
+        self.mode = {'move': 'accelerate', 'sticky_rotate': False}
+
     def game_loop(self):
 
         closed = False
-        mode = "accelerate"
 
         while not closed:
 
@@ -69,9 +72,9 @@ class Interface:
                 self.HappyBread.reset_position(self.x_mid, self.y_mid)
 
             # player control:
-            if mode == "translate":
+            if self.mode['move'] == "translate":
                 self.translate_control(self.HappyBread, ev, key)
-            elif mode == "accelerate":
+            elif self.mode['move'] == "accelerate":
                 self.accelerate_control(self.HappyBread, ev, key)
 
             # should add bouncing off of objects/walls
@@ -80,7 +83,7 @@ class Interface:
             if self.items[0].collides_with(self.items[1]):
                 print("collision at " + self.HappyBread.center_to_string())
 
-            self.game_display.fill(violet)
+            self.game_display.fill(black)
             self.show_all_items()
 
             pg.display.update()
@@ -93,7 +96,9 @@ class Interface:
         for item in self.items:
             self.show(item)
 
-    def translate_control(self, item, events, key, translation_sensitivity=10, rotation_sensitivity=6.4):
+    def translate_control(self, item, events, key,
+                          translation_sensitivity=10,
+                          rotation_sensitivity=6.4):
         # these controls give the bread (or any item) up/down and tumble left/right motion
         ground_axis = self.display_height - item.sprite.get_rect().height / 2
         if key[pg.K_UP] or key[pg.K_w]:
@@ -114,30 +119,49 @@ class Interface:
             item.teleport(spot[0], spot[1])
             item.rotate(item.omega)  # silly rotation, press freeze to stop it
 
-    def accelerate_control(self, item, events, key, translation_sensitivity=0.38, rotation_sensitivity=0.5):
+    def accelerate_control(self, item, events, key,
+                           accelerate_sensitivity=0.38,
+                           rotational_accelerate_sensitivity=0.5,
+                           target_rotation=8):
         # these controls give the item smooth wasd acceleration controls and left/right rotational acceleration
-        # ground_axis = self.display_height - item.sprite.get_rect().height / 2
+
+        # keyboard controls
         if key[pg.K_w]:
-            item.accelerate(0, -translation_sensitivity)
+            item.accelerate(0, -accelerate_sensitivity)
         if key[pg.K_a]:
-            item.accelerate(-translation_sensitivity, 0)
+            item.accelerate(-accelerate_sensitivity, 0)
         if key[pg.K_s]:
-            item.accelerate(0, translation_sensitivity)
+            item.accelerate(0, accelerate_sensitivity)
         if key[pg.K_d]:
-            item.accelerate(translation_sensitivity, 0)
-        if key[pg.K_LEFT]:
-            item.accelerate(0, 0, rotation_sensitivity)
-        if key[pg.K_RIGHT]:
-            item.accelerate(0, 0, -rotation_sensitivity)
-        if key[pg.K_UP]:
-            item.accelerate_forward(translation_sensitivity)
-        if key[pg.K_DOWN]:
-            item.accelerate_forward(-translation_sensitivity)
+            item.accelerate(accelerate_sensitivity, 0)
+        if key[pg.K_q]:
+            item.accelerate(0, 0, rotational_accelerate_sensitivity)
+            self.mode['sticky_rotate'] = False
+        if key[pg.K_e]:
+            item.accelerate(0, 0, -rotational_accelerate_sensitivity)
+            self.mode['sticky_rotate'] = False
+
+        if key[pg.K_i] or key[pg.K_UP]:
+            item.accelerate_forward(accelerate_sensitivity)
+        if key[pg.K_k] or key[pg.K_DOWN]:
+            item.accelerate_forward(-accelerate_sensitivity)
+        if key[pg.K_LEFT] or key[pg.K_j]:
+            item.smooth_rotate(target_rotation, sensitivity=16)
+            self.mode['sticky_rotate'] = True
+        if key[pg.K_RIGHT] or key[pg.K_l]:
+            item.smooth_rotate(-target_rotation, sensitivity=16)
+            self.mode['sticky_rotate'] = True
+        if self.mode['sticky_rotate']:
+            if not (key[pg.K_LEFT] or key[pg.K_j] or key[pg.K_RIGHT] or key[pg.K_l]):
+                item.smooth_rotate(0, sensitivity=30)
+
         # mouse controls
         if pg.mouse.get_pressed()[0]:
             spot = pg.mouse.get_pos()
             item.smooth_translate(spot[0], spot[1])
+
         item.translate()  # updates after velocity has been updated
+#         item.update()  # less efficient than translate() here
 
 
 #   modes for friction,
@@ -146,6 +170,6 @@ class Interface:
 
 
 if __name__ == "__main__":
-    a = Interface()
+    a = Game()
     a.game_loop()
     quit_app()
