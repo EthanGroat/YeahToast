@@ -1,6 +1,7 @@
 # import pygame as pg  # not needed because it is imported in Toast.py
 
 from Toast import *
+from Fleet import *
 
 # color definition triplets
 black = (0, 0, 0)
@@ -39,12 +40,12 @@ class Game:
         self.HappyBread = NewtonianItem(sprite='resources/HappyBread_wT.png',
                                         coordinates=(self.x_mid, self.y_mid))
         self.Toaster = Item(sprite='resources/Toaster.png',
-                            coordinates=(256, 224))
-        self.items = [self.Toaster, self.HappyBread]
-
-        # do items[] then append and assign in the same line?
+                            coordinates=(256, 288))
+        self.fleet = Fleet([self.Toaster, self.HappyBread])
 
         self.mode = {'move': 'accelerate', 'sticky_rotate': False}
+
+    #   -----------------------------------------------------------------------
 
     def game_loop(self):
 
@@ -59,11 +60,13 @@ class Game:
 
             key = pg.key.get_pressed()
 
+            # special controls
+            # ----------------
             # modes:
             if key[pg.K_1]:
-                mode = "accelerate"
+                self.mode['move'] = "accelerate"
             if key[pg.K_2]:
-                mode = "translate"
+                self.mode['move'] = "translate"
                 self.HappyBread.reset_velocity()
             # freeze and reset
             if key[pg.K_f]:
@@ -71,7 +74,7 @@ class Game:
             if key[pg.K_r]:
                 self.HappyBread.reset_position(self.x_mid, self.y_mid)
 
-            # player control:
+            # Standard player controls:
             if self.mode['move'] == "translate":
                 self.translate_control(self.HappyBread, ev, key)
             elif self.mode['move'] == "accelerate":
@@ -80,8 +83,11 @@ class Game:
             # should add bouncing off of objects/walls
 
             # collision detection:
-            if self.items[0].collides_with(self.items[1]):
+            if self.fleet.items[0].collides_with(self.fleet.items[1]):
                 print("collision at " + self.HappyBread.center_to_string())
+                self.HappyBread.apply_force(6, 0)
+
+            self.fleet.update()
 
             self.game_display.fill(black)
             self.show_all_items()
@@ -89,11 +95,13 @@ class Game:
             pg.display.update()
             self.clock.tick(48)  # Hobbit framerate
 
+    #   -----------------------------------------------------------------------
+
     def show(self, item):
         self.game_display.blit(item.rotated, item.rect)
 
     def show_all_items(self):
-        for item in self.items:
+        for item in self.fleet.items:
             self.show(item)
 
     def translate_control(self, item, events, key,
@@ -117,7 +125,8 @@ class Game:
             spot = pg.mouse.get_pos()
             print(spot)
             item.teleport(spot[0], spot[1])
-            item.rotate(item.omega)  # silly rotation, press freeze to stop it
+            item.rotate(item.omega)
+            # silly rotation, press freeze to stop it
 
     def accelerate_control(self, item, events, key,
                            accelerate_sensitivity=0.38,
@@ -160,8 +169,7 @@ class Game:
             spot = pg.mouse.get_pos()
             item.smooth_translate(spot[0], spot[1])
 
-        item.translate()  # updates after velocity has been updated
-#         item.update()  # less efficient than translate() here
+        # item.update()  # is called in game_loop on all items in fleet
 
 
 #   modes for friction,

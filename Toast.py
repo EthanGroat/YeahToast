@@ -3,6 +3,7 @@ import math
 
 
 class Item:
+
     def __init__(self, sprite=None, coordinates=(0, 0), width=250.0):
         if sprite:
             self.sprite = pg.image.load(sprite)
@@ -15,9 +16,12 @@ class Item:
 
     def translate(self, x_by=0.0, y_by=0.0, phi=0.0):  # used for both rotation and translation
         # defaults to zero for interoperability in updating Items
-        self.rect.centerx += x_by
-        self.rect.centery += y_by
-        self.center = list(self.rect.center)
+        # self.rect.centerx += x_by
+        # self.rect.centery += y_by
+        # self.center = list(self.rect.center)
+        self.center[0] += x_by
+        self.center[1] += y_by
+        self.rect.center = tuple(self.center)  # update pygame sprite placement
         self.rotate(phi)
 
     def teleport(self, x, y, reset_rotation=False):
@@ -33,6 +37,9 @@ class Item:
         self.rotated = pg.transform.rotate(self.sprite, self.rotation)
         self.rect = self.rotated.get_rect(center=self.center)  # working! :D
 
+    def update(self):
+        pass
+
     def center_to_string(self):
         return "({:.1f}, {:.1f})".format(self.center[0], self.center[1])
 
@@ -47,6 +54,7 @@ class Item:
 
 
 class AcceleratingItem(Item):
+
     def __init__(self, sprite=None, coordinates=(0, 0), width=250.0, velocity=(0.0, 0.0), womega=0.0):
         self.velocity = list(velocity)  # lists are mutable, tuples aren't
         self.omega = womega  # angular velocity
@@ -92,7 +100,8 @@ class AcceleratingItem(Item):
         # self.smooth_translate() to origin instead of teleport
 
     def throw(self, x, y, speed=1.0):  # fast translate toward a specific point
-        # if point is moving and speed=1, end with continued velocity of speed*velocity of the moving point
+        # if point is moving and speed=1, end with continued velocity
+        # of speed*velocity of the moving point
         delta_x = x - self.center[0]
         delta_y = y - self.center[1]
         self.velocity = [delta_x*speed, delta_y*speed]
@@ -111,12 +120,13 @@ class AcceleratingItem(Item):
         angular_acceleration = k * (target_angular_velocity - self.omega)
         self.accelerate(0, 0, angular_acceleration)
         if not self.omega == 0:
-            if abs(self.omega) < 0.001:
+            if abs(self.omega) < 0.003:
                 self.omega = 0
             print(self.omega)
 
 
 class NewtonianItem(AcceleratingItem):
+
     def __init__(self, sprite=None, coordinates=(0, 0), width=250.0, mass=1.0, velocity=(0.0, 0.0), womega=0.0):
         self.mass = mass
         self.netForces = [0.0, 0.0]
