@@ -4,7 +4,8 @@ import math
 
 class Item:
 
-    def __init__(self, sprite=None, coordinates=(0, 0), width=250.0):
+    def __init__(self, game_handle, sprite=None, coordinates=(0, 0), width=250.0):
+        self.game_handle = game_handle
         if sprite:
             self.sprite = pg.image.load(sprite)
             self.rotated = self.sprite
@@ -16,9 +17,6 @@ class Item:
 
     def translate(self, x_by=0.0, y_by=0.0, phi=0.0):  # used for both rotation and translation
         # defaults to zero for interoperability in updating Items
-        # self.rect.centerx += x_by
-        # self.rect.centery += y_by
-        # self.center = list(self.rect.center)
         self.center[0] += x_by
         self.center[1] += y_by
         self.rect.center = tuple(self.center)  # update pygame sprite placement
@@ -55,10 +53,10 @@ class Item:
 
 class AcceleratingItem(Item):
 
-    def __init__(self, sprite=None, coordinates=(0, 0), width=250.0, velocity=(0.0, 0.0), womega=0.0):
+    def __init__(self, game_handle, sprite=None, coordinates=(0, 0), width=250.0, velocity=(0.0, 0.0), womega=0.0):
         self.velocity = list(velocity)  # lists are mutable, tuples aren't
         self.omega = womega  # angular velocity
-        super().__init__(sprite, coordinates, width)
+        super().__init__(game_handle, sprite, coordinates, width)
 
     def translate(self, x_by=0.0, y_by=0.0, phi=0.0):
         """updates position incrementally using relative coordinates"""
@@ -127,10 +125,11 @@ class AcceleratingItem(Item):
 
 class NewtonianItem(AcceleratingItem):
 
-    def __init__(self, sprite=None, coordinates=(0, 0), width=250.0, mass=1.0, velocity=(0.0, 0.0), womega=0.0):
+    def __init__(self, game_handle, sprite=None, coordinates=(0, 0), width=250.0,
+                 mass=1.0, velocity=(0.0, 0.0), womega=0.0):
         self.mass = mass
         self.netForces = [0.0, 0.0]
-        super().__init__(sprite, coordinates, width, velocity, womega)
+        super().__init__(game_handle, sprite, coordinates, width, velocity, womega)
 
     def set_net_forces(self, net_x, net_y):  # takes coordinate floats and puts them in the Force vector
         self.netForces = [net_x, net_y]
@@ -153,6 +152,9 @@ class NewtonianItem(AcceleratingItem):
         # (optional as update() can be called after any number of calls of apply_force() in the game loop)
         self.apply_force(x_force, y_force)
         self.accelerate()
+        if self.game_handle.mode:
+            if self.game_handle.mode['move'] == 'translate':
+                self.reset_velocity()
+                print('It worked!')
         self.translate()
         self.set_net_forces(0.0, 0.0)
-

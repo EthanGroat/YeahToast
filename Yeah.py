@@ -37,13 +37,13 @@ class Game:
         self.x_mid = self.screen_surf.get_rect().centerx
         self.y_mid = self.screen_surf.get_rect().centery
 
-        self.HappyBread = NewtonianItem(sprite='resources/HappyBread_wT.png',
+        self.HappyBread = NewtonianItem(self, sprite='resources/HappyBread_wT.png',
                                         coordinates=(self.x_mid, self.y_mid))
-        self.Toaster = Item(sprite='resources/Toaster.png',
-                            coordinates=(256, 288))
+        self.Toaster = Item(self, sprite='resources/Toaster.png', coordinates=(256, 288))
         self.fleet = Fleet([self.Toaster, self.HappyBread])
 
         self.mode = {'move': 'accelerate', 'sticky_rotate': False}
+        # self.events = []
 
     #   -----------------------------------------------------------------------
 
@@ -53,8 +53,8 @@ class Game:
 
         while not closed:
 
-            ev = pg.event.get()
-            for event in ev:
+            events = pg.event.get()
+            for event in events:
                 if event.type == pg.QUIT:
                     closed = True
 
@@ -76,9 +76,9 @@ class Game:
 
             # Standard player controls:
             if self.mode['move'] == "translate":
-                self.translate_control(self.HappyBread, ev, key)
+                self.translate_control(self.HappyBread, key)
             elif self.mode['move'] == "accelerate":
-                self.accelerate_control(self.HappyBread, ev, key)
+                self.accelerate_control(self.HappyBread, key)
 
             # should add bouncing off of objects/walls
 
@@ -104,7 +104,7 @@ class Game:
         for item in self.fleet.items:
             self.show(item)
 
-    def translate_control(self, item, events, key,
+    def translate_control(self, item, key,
                           translation_sensitivity=10,
                           rotation_sensitivity=6.4):
         # these controls give the bread (or any item) up/down and tumble left/right motion
@@ -128,7 +128,7 @@ class Game:
             item.rotate(item.omega)
             # silly rotation, press freeze to stop it
 
-    def accelerate_control(self, item, events, key,
+    def accelerate_control(self, item, key,
                            accelerate_sensitivity=0.38,
                            rotational_accelerate_sensitivity=0.5,
                            target_rotation=8):
