@@ -37,9 +37,10 @@ class Game:
         self.x_mid = self.screen_surf.get_rect().centerx
         self.y_mid = self.screen_surf.get_rect().centery
 
-        self.HappyBread = NewtonianItem(self, sprite='resources/HappyBread_wT.png',
+        self.HappyBread = NewtonianItem(game_handle=self, sprite='resources/HappyBread_wT.png',
                                         coordinates=(self.x_mid, self.y_mid))
-        self.Toaster = Item(self, sprite='resources/Toaster.png', coordinates=(256, 288))
+        self.Toaster = Item(game_handle=self, sprite='resources/Toaster.png',
+                            coordinates=(256, 288))
         self.fleet = Fleet([self.Toaster, self.HappyBread])
 
         self.mode = {'move': 'accelerate', 'sticky_rotate': False}
