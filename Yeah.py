@@ -105,6 +105,8 @@ class Game:
         for item in self.fleet.items:
             self.show(item)
 
+    #   -----------------------------------------------------------------------
+
     def translate_control(self, item, key,
                           translation_sensitivity=10,
                           rotation_sensitivity=6.4):
@@ -170,12 +172,11 @@ class Game:
             spot = pg.mouse.get_pos()
             item.smooth_translate(spot[0], spot[1])
 
-        # item.update()  # is called in game_loop on all items in fleet
-
+    #   -----------------------------------------------------------------------
 
 #   modes for friction,
-#   boundaries,
-#   automatic fly back
+#   boundary walls,
+#   automatic fly back into view
 
 
 if __name__ == "__main__":
