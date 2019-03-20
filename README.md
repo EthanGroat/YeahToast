@@ -2,16 +2,15 @@
 
 # Toast Engine / YeahToast!
 
-###Hello, well-done bread lovers!
+### Hello, well-done bread lovers!
 
-######or as my French colleague would say,
+###### or as my French colleague would say,
 
-!["Bonjour!"]
-[French Toast]
+![Bonjour!][French Toast]
 
 ### So, what is this anyway?
 
-#####A python-based game engine!
+##### A python-based game engine!
 
 What began as a little experiment in graphics with 
 Python, I am developing into a 2D game engine using 
