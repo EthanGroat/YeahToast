@@ -52,6 +52,8 @@ class Game:
 
         closed = False
 
+        print('Debug output:')
+
         while not closed:
 
             events = pg.event.get()
