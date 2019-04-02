@@ -1,11 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="81863bc1-748c-4efc-9516-c2348cde7a46" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/YeahToast!.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/YeahToast!.iml" afterDir="false" />
+    <list default="true" id="77f2ac2d-6870-428e-a040-d6a398b3fa85" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/YeahToast.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/YeahToast!.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dictionaries/iisan.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/R_User_Library.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Yeah.py" beforeDir="false" afterPath="$PROJECT_DIR$/Yeah.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/lib/python3.5/site-packages/pip-10.0.1-py3.5.egg/pip/_vendor/chardet/chardistribution.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/lib/python3.5/site-packages/pip-10.0.1-py3.5.egg/pip/_vendor/html5lib/treebuilders/base.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/lib/python3.5/site-packages/pip-10.0.1-py3.5.egg/pip/_vendor/urllib3/packages/ssl_match_hostname/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/lib64" beforeDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -13,19 +22,20 @@
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="FavoritesManager">
-    <favorites_list name="YeahToast" />
-  </component>
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
+    <leaf>
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Yeah.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="51">
-              <caret line="3" column="19" selection-start-line="3" selection-start-column="19" selection-end-line="3" selection-end-column="19" />
-              <folding>
-                <element signature="e#72#91#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="-225" />
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/.gitignore">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="295">
+              <caret line="109" column="12" lean-forward="true" selection-start-line="109" selection-start-column="12" selection-end-line="109" selection-end-column="12" />
             </state>
           </provider>
         </entry>
@@ -34,72 +44,30 @@
         <entry file="file://$PROJECT_DIR$/Toast.py">
           <provider selected="true" editor-type-id="text-editor">
             <state>
-              <caret column="19" lean-forward="true" selection-start-column="19" selection-end-column="19" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Fleet.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="85">
-              <caret line="5" lean-forward="true" selection-start-line="5" selection-end-line="5" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/README.md">
-          <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-            <state split_layout="SPLIT">
-              <first_editor />
-              <second_editor />
+              <folding>
+                <element signature="e#0#19#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
     </leaf>
   </component>
-  <component name="FileTemplateManagerImpl">
-    <option name="RECENT_TEMPLATES">
-      <list>
-        <option value="Python Script" />
-      </list>
-    </option>
-  </component>
-  <component name="FindInProjectRecents">
-    <findStrings>
-      <find>pygame</find>
-      <find>self.items</find>
-    </findStrings>
-  </component>
   <component name="Git.Settings">
-    <option name="PREVIOUS_COMMIT_AUTHORS">
-      <list>
-        <option value="CracklingBacon &lt;ethantgroat@gmail.com&gt;" />
-      </list>
-    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/Fleet.py" />
-        <option value="$PROJECT_DIR$/Toast.py" />
         <option value="$PROJECT_DIR$/.gitignore" />
-        <option value="$PROJECT_DIR$/README.md" />
-        <option value="$PROJECT_DIR$/Yeah.py" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="56" />
-    <option name="y" value="-5" />
-    <option name="width" value="1310" />
-    <option name="height" value="773" />
-  </component>
-  <component name="ProjectLevelVcsManager">
-    <ConfirmationsSetting value="2" id="Add" />
+    <option name="x" value="77" />
+    <option name="y" value="47" />
+    <option name="width" value="1279" />
+    <option name="height" value="701" />
   </component>
   <component name="ProjectView">
     <navigator proportions="" version="1">
@@ -114,6 +82,10 @@
               <item name="YeahToast" type="b2602c69:ProjectViewProjectNode" />
               <item name="YeahToast" type="462c0819:PsiDirectoryNode" />
             </path>
+            <path>
+              <item name="YeahToast" type="b2602c69:ProjectViewProjectNode" />
+              <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
+            </path>
           </expand>
           <select />
         </subPane>
@@ -123,24 +95,8 @@
   <component name="PropertiesComponent">
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="ignore_missing_gitignore" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
-    <property name="node.js.detected.package.eslint" value="true" />
-    <property name="node.js.path.for.package.eslint" value="project" />
-    <property name="node.js.selected.package.eslint" value="(autodetect)" />
-    <property name="settings.editor.selected.configurable" value="preferences.keymap" />
-  </component>
-  <component name="PyConsoleOptionsProvider">
-    <option name="myPythonConsoleState">
-      <console-settings module-name="YeahToast!" is-module-sdk="true" working-directory="$PROJECT_DIR$">
-        <option name="myUseModuleSdk" value="true" />
-        <option name="myModuleName" value="YeahToast!" />
-        <option name="myWorkingDirectory" value="$PROJECT_DIR$" />
-      </console-settings>
-    </option>
-  </component>
-  <component name="PyDebuggerOptionsProvider">
-    <option name="mySaveCallSignatures" value="true" />
+    <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
+    <property name="nodejs_npm_path_reset_for_default_project" value="true" />
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -154,355 +110,72 @@
       </list>
     </option>
   </component>
-  <component name="RunManager">
-    <configuration name="Default config" type="PythonConfigurationType" factoryName="Python">
-      <module name="YeahToast!" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Yeah.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
-  </component>
   <component name="SvnConfiguration">
     <configuration />
   </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="81863bc1-748c-4efc-9516-c2348cde7a46" name="Default Changelist" comment="" />
-      <created>1548973275865</created>
+      <changelist id="77f2ac2d-6870-428e-a040-d6a398b3fa85" name="Default Changelist" comment="" />
+      <created>1554232503225</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1548973275865</updated>
-      <workItem from="1554141006002" duration="2123000" />
+      <updated>1554232503225</updated>
+      <workItem from="1554232506817" duration="306000" />
     </task>
-    <task id="LOCAL-00001" summary="refactored code into a more object-oriented approach with a class called Interface encapsulating everything">
-      <created>1549428651280</created>
-      <option name="number" value="00001" />
-      <option name="presentableId" value="LOCAL-00001" />
-      <option name="project" value="LOCAL" />
-      <updated>1549428651280</updated>
-    </task>
-    <task id="LOCAL-00002" summary="added color defs for later use and refactored quit_app outside of Interface">
-      <created>1549429269129</created>
-      <option name="number" value="00002" />
-      <option name="presentableId" value="LOCAL-00002" />
-      <option name="project" value="LOCAL" />
-      <updated>1549429269129</updated>
-    </task>
-    <task id="LOCAL-00003" summary="further refactoring">
-      <created>1549432138925</created>
-      <option name="number" value="00003" />
-      <option name="presentableId" value="LOCAL-00003" />
-      <option name="project" value="LOCAL" />
-      <updated>1549432138925</updated>
-    </task>
-    <task id="LOCAL-00004" summary="fixed rotation bounce!">
-      <created>1549437604214</created>
-      <option name="number" value="00004" />
-      <option name="presentableId" value="LOCAL-00004" />
-      <option name="project" value="LOCAL" />
-      <updated>1549437604214</updated>
-    </task>
-    <task id="LOCAL-00005" summary="Updated comments and resized screen">
-      <created>1549439568995</created>
-      <option name="number" value="00005" />
-      <option name="presentableId" value="LOCAL-00005" />
-      <option name="project" value="LOCAL" />
-      <updated>1549439568995</updated>
-    </task>
-    <task id="LOCAL-00006" summary="Refactored controls, added acceleration, velocity&#10;Refactored all the control if statements into a single method that the main loop calls for a particular control scheme.  More control schemes will be added taking advantage of the other change here:&#10;Added acceleration and velocity (including angular for both) to a class that extends Item">
-      <created>1550438852545</created>
-      <option name="number" value="00006" />
-      <option name="presentableId" value="LOCAL-00006" />
-      <option name="project" value="LOCAL" />
-      <updated>1550438852546</updated>
-    </task>
-    <task id="LOCAL-00007" summary="Added acceleration controls&#10;Also bug fixes and further increased utility of functions">
-      <created>1550442214487</created>
-      <option name="number" value="00007" />
-      <option name="presentableId" value="LOCAL-00007" />
-      <option name="project" value="LOCAL" />
-      <updated>1550442214487</updated>
-    </task>
-    <task id="LOCAL-00008" summary="Floating point velocities &amp; accelerations&#10;More precise tracking and updating of velocities using floats,&#10;but not position yet, so effective translational velocity is&#10;still an integer multiple.">
-      <created>1550453925563</created>
-      <option name="number" value="00008" />
-      <option name="presentableId" value="LOCAL-00008" />
-      <option name="project" value="LOCAL" />
-      <updated>1550453925563</updated>
-    </task>
-    <task id="LOCAL-00009" summary="Floating point velocities &amp; accelerations&#10;More precise tracking and updating of velocities using floats,&#10;but not position yet, so effective translational velocity is&#10;still an integer multiple.">
-      <created>1550453962846</created>
-      <option name="number" value="00009" />
-      <option name="presentableId" value="LOCAL-00009" />
-      <option name="project" value="LOCAL" />
-      <updated>1550453962846</updated>
-    </task>
-    <task id="LOCAL-00010" summary="Floating point positions&#10;Even more precision&#10;Also slightly more concise code&#10;And fixed a logical error where integer rotation was still a thing">
-      <created>1550456712827</created>
-      <option name="number" value="00010" />
-      <option name="presentableId" value="LOCAL-00010" />
-      <option name="project" value="LOCAL" />
-      <updated>1550456712827</updated>
-    </task>
-    <task id="LOCAL-00011" summary="Flight controls (forward)">
-      <created>1550459705659</created>
-      <option name="number" value="00011" />
-      <option name="presentableId" value="LOCAL-00011" />
-      <option name="project" value="LOCAL" />
-      <updated>1550459705660</updated>
-    </task>
-    <task id="LOCAL-00012" summary="Switch modes on the fly, reset and freeze buttons&#10;More methods like teleport (translate to an absolute location rather than a relative location) and freeze (reset velocity and rotational velocity)">
-      <created>1550789151377</created>
-      <option name="number" value="00012" />
-      <option name="presentableId" value="LOCAL-00012" />
-      <option name="project" value="LOCAL" />
-      <updated>1550789151378</updated>
-    </task>
-    <task id="LOCAL-00013" summary="NewtonianItem added, extending AcceleratingItem&#10;Force vector, mass float: used to calculate acceleration (which is still just a method to add to velocity and not a variable)">
-      <created>1550937450046</created>
-      <option name="number" value="00013" />
-      <option name="presentableId" value="LOCAL-00013" />
-      <option name="project" value="LOCAL" />
-      <updated>1550937450046</updated>
-    </task>
-    <task id="LOCAL-00014" summary="More physics groundwork, click and drag">
-      <created>1550980096220</created>
-      <option name="number" value="00014" />
-      <option name="presentableId" value="LOCAL-00014" />
-      <option name="project" value="LOCAL" />
-      <updated>1550980096221</updated>
-    </task>
-    <task id="LOCAL-00015" summary="Refactoring, transparency, collisions groundwork">
-      <created>1551234672813</created>
-      <option name="number" value="00015" />
-      <option name="presentableId" value="LOCAL-00015" />
-      <option name="project" value="LOCAL" />
-      <updated>1551234672813</updated>
-    </task>
-    <task id="LOCAL-00016" summary="some collisions testing">
-      <created>1551823493938</created>
-      <option name="number" value="00016" />
-      <option name="presentableId" value="LOCAL-00016" />
-      <option name="project" value="LOCAL" />
-      <updated>1551823493938</updated>
-    </task>
-    <task id="LOCAL-00017" summary="Asteroids style movement">
-      <created>1551999410777</created>
-      <option name="number" value="00017" />
-      <option name="presentableId" value="LOCAL-00017" />
-      <option name="project" value="LOCAL" />
-      <updated>1551999410777</updated>
-    </task>
-    <task id="LOCAL-00018" summary="update run configuration">
-      <created>1552954273237</created>
-      <option name="number" value="00018" />
-      <option name="presentableId" value="LOCAL-00018" />
-      <option name="project" value="LOCAL" />
-      <updated>1552954273237</updated>
-    </task>
-    <task id="LOCAL-00019" summary="comments and formatting">
-      <created>1552954604873</created>
-      <option name="number" value="00019" />
-      <option name="presentableId" value="LOCAL-00019" />
-      <option name="project" value="LOCAL" />
-      <updated>1552954604873</updated>
-    </task>
-    <task id="LOCAL-00020" summary="add .gitignore, update README">
-      <created>1553021701480</created>
-      <option name="number" value="00020" />
-      <option name="presentableId" value="LOCAL-00020" />
-      <option name="project" value="LOCAL" />
-      <updated>1553021701480</updated>
-    </task>
-    <task id="LOCAL-00021" summary="added u and o rotational acceleration controls&#10;also commented controls code for clarity&#10;&#10;now have, mostly the same as before:&#10;&#10;wasd absolute controls, qe rotational acceleration&#10;ijkl relative controls with rotation, uo rotational acceleration&#10;arrow keys same as ijkl">
-      <created>1553022895607</created>
-      <option name="number" value="00021" />
-      <option name="presentableId" value="LOCAL-00021" />
-      <option name="project" value="LOCAL" />
-      <updated>1553022895607</updated>
-    </task>
-    <option name="localTasksCounter" value="22" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="2123000" />
+    <option name="totallyTimeSpent" value="306000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-7" y="-7" width="1550" height="840" extended-state="6" />
+    <frame x="67" y="25" width="1299" height="743" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.16823056" />
+      <window_info id="Favorites" side_tool="true" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.24980047" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
-      <window_info id="Favorites" order="2" side_tool="true" weight="0.32944834" />
       <window_info anchor="bottom" id="Docker" show_stripe_button="false" />
       <window_info anchor="bottom" id="Database Changes" />
+      <window_info anchor="bottom" id="Version Control" />
+      <window_info anchor="bottom" id="Python Console" />
+      <window_info active="true" anchor="bottom" id="Terminal" visible="true" weight="0.32899022" />
+      <window_info anchor="bottom" id="Event Log" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
-      <window_info anchor="bottom" id="Find" order="1" weight="0.3291536" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.4996115" visible="true" weight="0.31875882" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.398773" />
+      <window_info anchor="bottom" id="Find" order="1" />
+      <window_info anchor="bottom" id="Run" order="2" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
-      <window_info anchor="bottom" id="Version Control" order="7" sideWeight="0.4988345" weight="0.32668713" />
-      <window_info anchor="bottom" id="Terminal" order="8" />
-      <window_info anchor="bottom" id="Event Log" order="9" sideWeight="0.5011655" side_tool="true" weight="0.32618684" />
-      <window_info anchor="bottom" id="Python Console" order="10" />
       <window_info anchor="right" id="SciView" />
       <window_info anchor="right" id="Database" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
-      <window_info anchor="right" id="R Graphics" order="3" />
-      <window_info anchor="right" id="R Packages" order="4" />
     </layout>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
   </component>
-  <component name="Vcs.Log.History.Properties">
-    <option name="COLUMN_ORDER">
-      <list>
-        <option value="0" />
-        <option value="2" />
-        <option value="3" />
-        <option value="1" />
-      </list>
-    </option>
-  </component>
-  <component name="Vcs.Log.Tabs.Properties">
-    <option name="TAB_STATES">
-      <map>
-        <entry key="MAIN">
-          <value>
-            <State>
-              <option name="RECENTLY_FILTERED_USER_GROUPS">
-                <collection />
-              </option>
-              <option name="RECENTLY_FILTERED_BRANCH_GROUPS">
-                <collection />
-              </option>
-              <option name="COLUMN_ORDER">
-                <list>
-                  <option value="0" />
-                  <option value="1" />
-                  <option value="2" />
-                  <option value="3" />
-                </list>
-              </option>
-            </State>
-          </value>
-        </entry>
-      </map>
-    </option>
-    <option name="RECENT_FILTERS">
-      <map>
-        <entry key="Branch">
-          <value>
-            <list />
-          </value>
-        </entry>
-        <entry key="User">
-          <value>
-            <list />
-          </value>
-        </entry>
-      </map>
-    </option>
-  </component>
-  <component name="VcsManagerConfiguration">
-    <MESSAGE value="refactored code into a more object-oriented approach with a class called Interface encapsulating everything" />
-    <MESSAGE value="added color defs for later use and refactored quit_app outside of Interface" />
-    <MESSAGE value="further refactoring" />
-    <MESSAGE value="fixed rotation bounce!" />
-    <MESSAGE value="Updated comments and resized screen" />
-    <MESSAGE value="Refactored controls, added acceleration, velocity&#10;Refactored all the control if statements into a single method that the main loop calls for a particular control scheme.  More control schemes will be added taking advantage of the other change here:&#10;Added acceleration and velocity (including angular for both) to a class that extends Item" />
-    <MESSAGE value="Added acceleration controls&#10;Also bug fixes and further increased utility of functions" />
-    <MESSAGE value="Floating point velocities &amp; accelerations&#10;More precise tracking and updating of velocities using floats,&#10;but not position yet, so effective translational velocity is&#10;still an integer multiple." />
-    <MESSAGE value="Floating point positions&#10;Even more precision&#10;Also slightly more concise code&#10;And fixed a logical error where integer rotation was still a thing" />
-    <MESSAGE value="Flight controls (forward)" />
-    <MESSAGE value="Switch modes on the fly, reset and freeze buttons&#10;More methods like teleport (translate to an absolute location rather than a relative location) and freeze (reset velocity and rotational velocity)" />
-    <MESSAGE value="NewtonianItem added, extending AcceleratingItem&#10;Force vector, mass float: used to calculate acceleration (which is still just a method to add to velocity and not a variable)" />
-    <MESSAGE value="More physics groundwork, click and drag" />
-    <MESSAGE value="Refactoring, transparency, collisions groundwork" />
-    <MESSAGE value="some collisions testing" />
-    <MESSAGE value="Asteroids style movement" />
-    <MESSAGE value="Toaster forces to the right on collision&#10;Toaster is repositioned slightly&#10;There is a bug with control mode 2 after force applied, idk why;&#10;Further refactoring with fleet and update;&#10;improvement to precision of translate function" />
-    <MESSAGE value="bug fixed, game_handle added&#10;Fixed the accelerating bug when acceleration is supposed to be off.&#10;A composition relationship has been implemented where the items all take the game_handle parameter with the value of the Game object.&#10;Tiny bit of refactoring and cleaning up code" />
-    <MESSAGE value="update run configuration" />
-    <MESSAGE value="comments and formatting" />
-    <MESSAGE value="add .gitignore, update README" />
-    <MESSAGE value="added u and o rotational acceleration controls&#10;also commented controls code for clarity&#10;&#10;now have, mostly the same as before:&#10;&#10;wasd absolute controls, qe rotational acceleration&#10;ijkl relative controls with rotation, uo rotational acceleration&#10;arrow keys same as ijkl" />
-    <option name="LAST_COMMIT_MESSAGE" value="added u and o rotational acceleration controls&#10;also commented controls code for clarity&#10;&#10;now have, mostly the same as before:&#10;&#10;wasd absolute controls, qe rotational acceleration&#10;ijkl relative controls with rotation, uo rotational acceleration&#10;arrow keys same as ijkl" />
-  </component>
-  <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/YeahToast$Default_config.coverage" NAME="Default config Coverage Results" MODIFIED="1554142324108" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-  </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/.git/info/exclude">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/.idea/workspace.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="11" column="14" selection-start-line="11" selection-start-column="14" selection-end-line="11" selection-end-column="14" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/.gitignore">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="7" column="14" lean-forward="true" selection-start-line="7" selection-start-column="14" selection-end-line="7" selection-end-column="14" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/LICENSE">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/Toast.py">
       <provider selected="true" editor-type-id="text-editor">
         <state>
-          <caret column="19" lean-forward="true" selection-start-column="19" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Fleet.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="5" lean-forward="true" selection-start-line="5" selection-end-line="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/README.md">
-      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-        <state split_layout="SPLIT">
-          <first_editor />
-          <second_editor />
+          <folding>
+            <element signature="e#0#19#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Yeah.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="51">
-          <caret line="3" column="19" selection-start-line="3" selection-start-column="19" selection-end-line="3" selection-end-column="19" />
-          <folding>
-            <element signature="e#72#91#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="-225" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.gitignore">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="295">
+          <caret line="109" column="12" lean-forward="true" selection-start-line="109" selection-start-column="12" selection-end-line="109" selection-end-column="12" />
         </state>
       </provider>
     </entry>
