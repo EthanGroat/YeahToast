@@ -43,7 +43,9 @@ class Game:
                             coordinates=(256, 288))
         self.fleet = Fleet([self.Toaster, self.HappyBread])
 
-        self.mode = {'move': 'accelerate', 'sticky_rotate': False}
+        self.mode = {'move': 'accelerate',
+                     'sticky_rotate': False}
+
         # self.events = []
 
     #   -----------------------------------------------------------------------
@@ -114,17 +116,26 @@ class Game:
                           rotation_sensitivity=6.4):
         # these controls give the bread (or any item) up/down and tumble left/right motion
         ground_axis = self.display_height - item.sprite.get_rect().height / 2
-        if key[pg.K_UP] or key[pg.K_w]:
+        if key[pg.K_w]:
             item.translate(0, -translation_sensitivity)
-        if key[pg.K_LEFT] or key[pg.K_a]:
+        if key[pg.K_a]:
             item.rotate(rotation_sensitivity)
             item.translate(-translation_sensitivity, 0)
-        if key[pg.K_DOWN] or key[pg.K_s]:
-            if item.center[1] < ground_axis:
+        if key[pg.K_s]:
+            # if item.center[1] < ground_axis:
                 item.translate(0, translation_sensitivity)
-        if key[pg.K_RIGHT] or key[pg.K_d]:
+        if key[pg.K_d]:
             item.rotate(-rotation_sensitivity)
             item.translate(translation_sensitivity, 0)
+        if key[pg.K_UP]:
+            item.translate_forward(translation_sensitivity)
+        if key[pg.K_LEFT]:
+            item.rotate(rotation_sensitivity)
+        if key[pg.K_DOWN]:
+            item.translate_forward(-translation_sensitivity)
+        if key[pg.K_RIGHT]:
+            item.rotate(-rotation_sensitivity)
+
         # mouse controls
         if pg.mouse.get_pressed()[0]:
             spot = pg.mouse.get_pos()

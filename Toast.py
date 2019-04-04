@@ -22,6 +22,10 @@ class Item:
         self.rect.center = tuple(self.center)  # update pygame sprite placement
         self.rotate(phi)
 
+    def translate_forward(self, distance):
+        self.center[0] += -distance * math.sin(math.radians(self.rotation))  # sine takes radians, not degrees!
+        self.center[1] += -distance * math.cos(math.radians(self.rotation))
+
     def teleport(self, x, y, reset_rotation=False):
         """translates to an exact location"""
         self.center[0] = x
@@ -36,6 +40,7 @@ class Item:
         self.rect = self.rotated.get_rect(center=self.center)  # working! :D
 
     def update(self):
+        # this function is here to generalize the update idea to all Items
         pass
 
     def center_to_string(self):
@@ -76,8 +81,7 @@ class AcceleratingItem(Item):
         self.accelerate(x_comp, y_comp)
 
     def update(self, x_acc=0.0, y_acc=0.0, angular_acc=0.0):
-        # this function is not really needed but here anyway to further generalize the update idea
-        # and encapsulate every normal incremental thing that AcceleratingItems do.
+        # This function encapsulates every normal incremental thing that AcceleratingItems do.
         self.accelerate(x_acc, y_acc, angular_acc)
         self.translate()
 
@@ -155,6 +159,6 @@ class NewtonianItem(AcceleratingItem):
         if self.game_handle.mode:
             if self.game_handle.mode['move'] == 'translate':
                 self.reset_velocity()
-                print('It worked!')
+                # print('It worked!')
         self.translate()
         self.set_net_forces(0.0, 0.0)
