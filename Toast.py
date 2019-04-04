@@ -27,6 +27,7 @@ class Item:
     def translate_forward(self, distance):
         self.center[0] += -distance * math.sin(math.radians(self.rotation))  # sine takes radians, not degrees!
         self.center[1] += -distance * math.cos(math.radians(self.rotation))
+        self.rect.center = tuple(self.center)  # update pygame sprite placement
 
     def teleport(self, x, y, reset_rotation=False):
         """translates to an exact location"""
