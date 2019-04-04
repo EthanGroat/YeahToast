@@ -111,11 +111,12 @@ class Game:
 
     #   -----------------------------------------------------------------------
 
-    def translate_control(self, item, key,
+    @staticmethod
+    def translate_control(item, key,
                           translation_sensitivity=10,
                           rotation_sensitivity=6.4):
         # these controls give the bread (or any item) up/down and tumble left/right motion
-        ground_axis = self.display_height - item.sprite.get_rect().height / 2
+        # ground_axis = self.display_height - item.sprite.get_rect().height / 2
         if key[pg.K_w]:
             item.translate(0, -translation_sensitivity)
         if key[pg.K_a]:
@@ -123,7 +124,7 @@ class Game:
             item.translate(-translation_sensitivity, 0)
         if key[pg.K_s]:
             # if item.center[1] < ground_axis:
-                item.translate(0, translation_sensitivity)
+            item.translate(0, translation_sensitivity)
         if key[pg.K_d]:
             item.rotate(-rotation_sensitivity)
             item.translate(translation_sensitivity, 0)
