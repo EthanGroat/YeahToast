@@ -8,8 +8,10 @@ class Item:
         self.game_handle = game_handle
         if sprite:
             self.sprite = pg.image.load(sprite)
-            self.rotated = self.sprite
-            self.rect = self.rotated.get_rect(center=coordinates)
+        else:
+            self.sprite = pg.Surface((16, 16))
+        self.rotated = self.sprite
+        self.rect = self.rotated.get_rect(center=coordinates)
         self.center = list(coordinates)  # internal coordinates used to remap surface, takes floats
         self.rotation = 0.0  # in degrees
         self.radius = width / 2
