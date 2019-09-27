@@ -1,18 +1,8 @@
 # import pygame as pg  # not needed because it is imported in Toast.py
 
-from Toast import *
+from Item import *
 from Fleet import *
-
-# color definition triplets
-black = (0, 0, 0)
-white = (255, 255, 255)
-red = (255, 0, 0)
-green = (0, 255, 0)
-blue = (0, 0, 255)
-cyan = (0, 255, 255)
-yellow = (255, 255, 0)
-magenta = (255, 0, 255)
-violet = (128, 0, 144)
+from Colors import *
 
 
 def quit_app():

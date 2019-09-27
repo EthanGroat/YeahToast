@@ -1,18 +1,26 @@
 import pygame as pg
 import math
+from random import *
+from Colors import *
 
 
 class Item:
 
-    def __init__(self, game_handle, sprite=None, coordinates=(0, 0), width=250.0):
+    def __init__(self, game_handle, sprite=None, coordinates=(0, 0), width=250.0, color=green):
         self.game_handle = game_handle
-        if sprite:
-            self.sprite = pg.image.load(sprite)
+        if sprite:  # comprehensive sprite handling
+            if type(sprite) is str:
+                self.sprite = pg.image.load(sprite)
+                print('Image load successful.')
+            elif isinstance(sprite, pg.Surface):  # for pre-loaded sprites
+                self.sprite = sprite
         else:
-            self.sprite = pg.Surface((16, 16))
+            self.sprite = pg.Surface((32, 32), pg.SRCALPHA)
+            pg.draw.rect(self.sprite, color, pg.Rect(4, 4, 24, 14), 4)
+
         self.rotated = self.sprite
         self.rect = self.rotated.get_rect(center=coordinates)
-        self.center = list(coordinates)  # internal coordinates used to remap surface, takes floats
+        self.center = list(coordinates)  # internal coordinates used to remap surface, takes lists of floats
         self.rotation = 0.0  # in degrees
         self.radius = width / 2
         # this is a rectangle used as a proxy for re-centering and blitting the sprite to the right location
@@ -40,11 +48,14 @@ class Item:
     def rotate(self, degrees):
         self.rotation += degrees
         self.rotated = pg.transform.rotate(self.sprite, self.rotation)
-        self.rect = self.rotated.get_rect(center=self.center)  # working! :D
+        self.rect = self.rotated.get_rect(center=self.center)
 
     def update(self):
         # this function is here to generalize the update idea to all Items
         pass
+
+    def show(self):
+        self.game_handle.game_display.blit(self.rotated, self.rect)
 
     def center_to_string(self):
         return "({:.1f}, {:.1f})".format(self.center[0], self.center[1])
@@ -153,7 +164,7 @@ class NewtonianItem(AcceleratingItem):
         self.velocity[1] += y_extra + self.netForces[1]/self.mass
         self.omega += angular_acceleration
 
-    # this is the class where update() becomes important
+    # this is the class where update() becomes really important
     def update(self, x_force=0.0, y_force=0.0, angular_acc=0.0):
         # takes the x and y components of an applied force as arguments
         # (optional as update() can be called after any number of calls of apply_force() in the game loop)
