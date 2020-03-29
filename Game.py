@@ -78,7 +78,7 @@ class Game:
             # should add bouncing off of objects/walls
 
             # collision detection:
-            if self.fleet.items[0].collides_with(self.fleet.items[1]):
+            if self.Toaster.collides_with(self.HappyBread):
                 print("collision at " + self.HappyBread.center_to_string())
                 self.HappyBread.apply_force(6, 0)
 
