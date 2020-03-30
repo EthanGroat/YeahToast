@@ -1,4 +1,3 @@
-# import pygame as pg  # not needed because it is imported in Toast.py
 
 from Item import *
 from Fleet import *
