@@ -91,12 +91,13 @@ class Game:
 
     #   -----------------------------------------------------------------------
 
-    def show(self, item):
-        self.game_display.blit(item.rotated, item.rect)
+    @staticmethod
+    def show(item):
+        item.show()
 
     def show_all_items(self):
         for item in self.fleet.items:
-            self.show(item)
+            item.show()
 
     #   -----------------------------------------------------------------------
 
